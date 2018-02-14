@@ -1,0 +1,97 @@
+<script type="text/javascript">
+  $(function() {
+    $('#carousel span').append('');
+    $('#thumbs a').append('');
+    $('#carousel').carouFredSel({
+      responsive: true,
+      circular: false,
+      auto: false,
+      items: {
+        visible: 1,
+        width: 200,
+        height: '100%'
+      },
+      scroll: {
+        fx: 'directscroll'
+      }
+    });
+
+    $('#thumbs').carouFredSel({
+      responsive: true,
+      circular: false,
+      infinite: false,
+      auto: false,
+      prev: '#prev',
+      next: '#next',
+      items: {
+        visible: {
+          min: 2,
+          max: 6
+        },
+        width: 150,
+        height: '66%'
+      }
+    });
+
+    $('#thumbs a').click(function() {
+      $('#carousel').trigger('slideTo', '#' + this.href.split('#').pop() );
+      $('#thumbs a').removeClass('selected');
+      $(this).addClass('selected');
+      return false;
+    });
+
+  });
+</script>
+
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="#">Home</a> &nbsp; > &nbsp;</li>
+      <li><a href="#">Products</a> &nbsp; > &nbsp;</li>
+      <li>Product Details</li>
+    </ul>
+  </div>
+</div>
+
+<div class=" wdt_100 pad_60">
+  <div class="mid_cnt">
+    <div class="prd_detail_slider">
+      <div id="wrapper">
+        <div id="carousel-wrapper">
+          <div id="carousel">
+            <% @product.avatars.each_with_index do |avatar, index| %>
+              <span id="product<%=index+1%>"><img src="<%=avatar.url%>" width="346" height="332"></span>
+            <% end %>
+
+          </div>
+        </div>
+        <div id="thumbs-wrapper">
+          <div id="thumbs">
+            <% @product.avatars.each_with_index do |avatar, index| %>
+              <a href="#product<%=index+1%>" class="<%= index == 0 ? 'selected' : '' %>"><img src="<%=avatar.url%>" width="50" height="50"></a>
+            <% end %>
+          </div>
+          <a id="prev" href="#"></a>
+          <a id="next" href="#"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prd_txt">
+      <h5><%= @product.name %></h5>
+      <div class="availablity_col">
+        Availability: <span><%= @product.in_stock ? "In Stock" : "Out Of Stock"%></span>
+      </div>
+      <div class="prd_detail_price"> <%= @product.price %></div>
+
+      Details: <p><%= @product.description %></p>
+
+      <div class="prd_detail_price"> <span class="price_txt">Quantity :</span>
+        <select name="" class="prd_quantity">
+          <option>1</option>
+        </select>
+      </div>
+      <a class="order_now add_cart1" href="#">Add To Cart</a>
+    </div>
+  </div>
+</div>

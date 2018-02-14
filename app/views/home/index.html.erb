@@ -1,0 +1,33 @@
+<div class=" wdt_100 pad_60 welcome_col">
+  <div class="mid_cnt">
+
+    <div class="welcome_desc">
+      <h3><span class="head_yellow">Welcome to </span><br/>Manage Pharma</h3>
+        <p>We exclusively use sun ripened whole grains to provide you with a source of power,
+          stamina and health! Spoil yourself with our breads natural flavor! We use only the finest
+          quality ingredients providing your body with important fiber and nutrients. For people who
+          suffer from allergies we offer a delicious range of wheat and yeast free products.
+        </p>
+    </div>
+  </div>
+</div>
+
+<div class="prdct_col wdt_100">
+  <div class="mid_cnt">
+    <ul class="prd_list">
+      <% @products.each do |product|%>
+        <li>
+          <%= image_tag product.avatars.first.url, height: 150, width: 250 %>
+          <h4><%= product.name  %></h4>
+          <span class="price"><%= product.price%></span>
+          <%= link_to 'See Details', product_path(product), class: 'order_now'%>
+        </li>
+      <%end%>
+    </ul>
+
+    <div class="prdt_btn">
+      <%=link_to 'More Products', products_path, class: 'more_btn' %>
+      <!-- <a class="more_btn" href="#">More <br/><span>products</span></a> -->
+    </div>
+  </div>
+</div>

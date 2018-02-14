@@ -6,9 +6,13 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Open+Sans+Condensed:300,700|Roboto:300,400,600,700|Roboto+Condensed:300,600,700" rel="stylesheet">
+	  <link href="https://fonts.googleapis.com/css?family=PT+Sans+Narrow:300,400,600,700|Patua+One|Qwigley" rel="stylesheet">
   </head>
 
   <body>
+  	<%= render 'partials/header'%>
     <%= yield %>
+    <%= render 'partials/footer'%>
   </body>
 </html>

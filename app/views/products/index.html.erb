@@ -1,0 +1,32 @@
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="/">Home</a> &nbsp; > &nbsp;</li>
+      <li>Products</li>
+    </ul>
+    <div class='text-right clear'>
+      <%if current_admin_user.present?%>
+        <%= link_to 'Add Product', new_product_path, class: 'btn btn-default'%>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+<div class=" wdt_100 pad_60">
+  <div class="mid_cnt">
+    <ul class="prd_list lists">
+      <% @products.each do |product|%>
+        <li>
+          <%=link_to product_path(product) do%>
+            <span class="img">
+              <%= image_tag product.avatars.first.url, height: 150, width: 250 %>
+            </span>
+          <%end%>
+          <h4><%= product.name  %></h4>
+          <span class="price"><%= product.price%></span>
+          <a class="order_now add_cart" href="#">Add To Cart</a>
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

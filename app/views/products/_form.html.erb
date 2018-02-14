@@ -1,0 +1,65 @@
+<%= form_with(model: product, local: true, class: 'form-horizontal center')do |form| %>
+  <% if product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= form.label :name, "Product Name", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.text_field :name, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, "Product Description", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :avatars, "Product Images", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.file_field :avatars, multiple: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :price, "Product Price", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.number_field :price, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :discount, "Product Price", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.number_field  :discount, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :in_stock, "Product In Stock", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.check_box  :in_stock, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :published, "Product Published", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.check_box  :published, class: "form-control" %>
+    </div>
+  </div>
+  <div class="text-center">
+
+    <%= form.submit "Submit", class: "btn btn-default btn-primary" %>
+  </div>
+<% end %>

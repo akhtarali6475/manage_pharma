@@ -31,6 +31,13 @@
     <%= form.text_area :address, id: :user_address %>
   </div>
 
+  <%= form.fields_for :payment_histories do |payment| %>
+    <div class="field">
+      <%= payment.label :amount %>
+      <%= payment.text_field :amount %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit %>
   </div>
