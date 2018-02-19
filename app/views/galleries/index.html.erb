@@ -1,0 +1,40 @@
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="/">Home</a> &nbsp; > &nbsp;</li>
+      <li>Gallery</li>
+    </ul>
+    <div class='text-right clear'>
+      <%if current_admin_user.present?%>
+        <%= link_to 'Create Scheme', new_gallery_path, class: 'btn btn-default'%>
+      <%end%>
+    </div>
+    <h1 class="text-center">Gallery</h1>
+  </div>
+</div>
+
+<div class=" wdt_100 pad_60">
+  <div class="mid_cnt">
+    <ul class="prd_list lists">
+      <% @galleries.each do |gallery|%>
+        <li>
+          <%=link_to gallery_path(gallery) do%>
+            <span class="img">
+              <% if gallery.avatars.present? %>
+                <%= image_tag gallery.avatars.try(:first).try(:url), height: 150, width: 250 %>
+              <% end %>
+            </span>
+          <%end%>
+          <h4><%= gallery.title  %></h4>
+          <span class="description"><%= gallery.description %></span>
+          <div>
+            <span class="date_text"> Place:</span><span class="date_value"><%= gallery.place %></span>
+          </div>
+          <%= link_to 'Edit', edit_gallery_path(gallery) %>
+          <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

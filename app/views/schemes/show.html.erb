@@ -1,0 +1,92 @@
+<script type="text/javascript">
+  $(function() {
+    $('#carousel span').append('');
+    $('#thumbs a').append('');
+    $('#carousel').carouFredSel({
+      responsive: true,
+      circular: false,
+      auto: false,
+      items: {
+        visible: 1,
+        width: 200,
+        height: '100%'
+      },
+      scroll: {
+        fx: 'directscroll'
+      }
+    });
+
+    $('#thumbs').carouFredSel({
+      responsive: true,
+      circular: false,
+      infinite: false,
+      auto: false,
+      prev: '#prev',
+      next: '#next',
+      items: {
+        visible: {
+          min: 2,
+          max: 6
+        },
+        width: 150,
+        height: '66%'
+      }
+    });
+
+    $('#thumbs a').click(function() {
+      $('#carousel').trigger('slideTo', '#' + this.href.split('#').pop() );
+      $('#thumbs a').removeClass('selected');
+      $(this).addClass('selected');
+      return false;
+    });
+
+  });
+</script>
+
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="#">Home</a> &nbsp; > &nbsp;</li>
+      <li><a href="#">Deal/Scheme</a> &nbsp; > &nbsp;</li>
+      <li>Deal/Scheme Details</li>
+    </ul>
+  </div>
+</div>
+
+<div class=" wdt_100 pad_60">
+  <div class="mid_cnt">
+    <div class="prd_detail_slider">
+      <div id="wrapper">
+        <div id="carousel-wrapper">
+          <div id="carousel">
+            <% @scheme.avatars.each_with_index do |avatar, index| %>
+              <span id="product<%=index+1%>"><img src="<%=avatar.url%>" width="346" height="332"></span>
+            <% end %>
+
+          </div>
+        </div>
+        <div id="thumbs-wrapper">
+          <div id="thumbs">
+            <% @scheme.avatars.each_with_index do |avatar, index| %>
+              <a href="#product<%=index+1%>" class="<%= index == 0 ? 'selected' : '' %>"><img src="<%=avatar.url%>" width="50" height="50"></a>
+            <% end %>
+          </div>
+          <a id="prev" href="#"></a>
+          <a id="next" href="#"></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="prd_txt">
+      <h5><%= @scheme.title %></h5>
+      <p><%= @scheme.description %></p>
+      <div>
+        <span class="date_text"> Start Date:</span><span class="date_value"><%= @scheme.start_date %></span>
+      </div>
+      <div>
+        <span class="date_text"> End Date:</span> <span class="date_value"><%= @scheme.end_date %></span>
+      </div>
+    </div>
+
+  </div>
+</div>

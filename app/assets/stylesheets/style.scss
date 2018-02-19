@@ -1343,3 +1343,25 @@ ul.breadcum {
     }
   }
 }
+
+ul.prd_list li .description{
+  font-size: 15px;
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+  text-align: left;
+}
+.date_text
+{
+  float: left;
+  width: 50%;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.date_value
+{
+  color: red;
+  font-family: monospace;
+  font-weight: bold;
+}

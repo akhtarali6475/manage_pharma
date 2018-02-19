@@ -1,0 +1,41 @@
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="/">Home</a> &nbsp; > &nbsp;</li>
+      <li>Schemes</li>
+    </ul>
+    <div class='text-right clear'>
+      <%if current_admin_user.present?%>
+        <%= link_to 'Create Scheme', new_scheme_path, class: 'btn btn-default'%>
+      <%end%>
+    </div>
+    <h1 class="text-center">Deal/Schemes</h1>
+  </div>
+</div>
+
+<div class=" wdt_100 pad_60">
+  <div class="mid_cnt">
+    <ul class="prd_list lists">
+      <% @schemes.each do |scheme|%>
+        <li>
+          <%=link_to scheme_path(scheme) do%>
+            <span class="img">
+              <%= image_tag scheme.avatars.first.url, height: 150, width: 250 %>
+            </span>
+          <%end%>
+          <h4><%= scheme.title  %></h4>
+          <span class="description"><%= scheme.description %></span>
+          <div>
+            <span class="date_text"> Deal/Scheme Start Date:</span><span class="date_value"><%= scheme.start_date %></span>
+          </div>
+          <div>
+            <span class="date_text"> Deal/Scheme End Date:</span> <span class="date_value"><%= scheme.end_date %></span>
+          </div>
+          <%= link_to 'Edit', edit_scheme_path(scheme) %>
+          <%= link_to 'Destroy', scheme, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+        </li>
+      <%end%>
+    </ul>
+  </div>
+</div>

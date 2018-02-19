@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :galleries
+  resources :schemes
   resources :products
   devise_for :admin_users
   resources :users

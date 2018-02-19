@@ -1,0 +1,61 @@
+<%= form_with(model: scheme, local: true, class: 'form-horizontal center')do |form| %>
+  <% if scheme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scheme.errors.count, "error") %> prohibited this scheme from being saved:</h2>
+
+      <ul>
+      <% scheme.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title, "Scheme/Deal Name", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.text_field :title, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, "Scheme/Deal Description", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.text_area :description, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :avatars, "Scheme/Deal Images", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.file_field :avatars, multiple: true, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :start_date , class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.date_select :start_date, id: :scheme_start_date %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :end_date , class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.date_select :end_date, id: :scheme_start_date %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :published, "Scheme/Deal Published", class: "col-md-4 control-label" %>
+    <div class="col-md-6">
+      <%= form.check_box  :published, class: "form-control" %>
+    </div>
+  </div>
+
+  <div class="text-center">
+
+    <%= form.submit "Submit", class: "btn btn-default btn-primary" %>
+  </div>
+<% end %>
+

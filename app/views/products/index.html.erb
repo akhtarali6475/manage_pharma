@@ -25,6 +25,10 @@
           <h4><%= product.name  %></h4>
           <span class="price"><%= product.price%></span>
           <a class="order_now add_cart" href="#">Add To Cart</a>
+          <div>
+            <%= link_to 'Edit', edit_product_path(product) %>
+            <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </div>
         </li>
       <%end%>
     </ul>
