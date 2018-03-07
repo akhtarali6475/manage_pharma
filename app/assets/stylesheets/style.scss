@@ -501,10 +501,10 @@ footer {
 }
 
 .ftr_wdt1 {
-  width: 24%;
+  width: 33%;
   float: left;
   &.ftr_wdt2 {
-    width: 17%;
+    width: 23%;
     float: right;
   }
   ul {
@@ -544,15 +544,17 @@ footer {
 }
 
 .tw_icon {
-  background: url(../images/ftr_social_icon.png) no-repeat 0px 0px;
+  background-image: image-url("ftr_social_icon");
 }
 
 .fb_icon {
-  background: url(../images/ftr_social_icon.png) no-repeat -60px 0px;
+  background-image: image-url("ftr_social_icon");
+  background-repeat: no-repeat;
+  background-position: center center;
 }
 
 .gplus_icon {
-  background: url(../images/ftr_social_icon.png) no-repeat -120px 0px;
+  background-image: image-url("ftr_social_icon");
 }
 
 .ftr_btm {

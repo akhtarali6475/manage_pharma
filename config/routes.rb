@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :job_applications
+  resources :job_application_forms
   resources :galleries
   resources :schemes
   resources :products
@@ -9,4 +11,8 @@ Rails.application.routes.draw do
   get '/about' => 'home#about', as: 'about'
   get '/contact' => 'home#contact', as: 'contact'
 
+  resources :job_application_forms, path: 'jobs' do
+    resources :job_applications, path: 'job-applications' do
+    end
+  end
 end

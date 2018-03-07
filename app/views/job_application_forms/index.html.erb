@@ -1,0 +1,36 @@
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="/">Home</a> &nbsp; > &nbsp;</li>
+      <li>Jobs</li>
+    </ul>
+    <div class='text-right clear'>
+      <%if current_admin_user.present?%>
+        <%= link_to 'Create Job', new_job_application_form_path, class: 'btn btn-default'%>
+      <%end%>
+    </div>
+    <h1 class="text-center">Jobs</h1>
+  </div>
+</div>
+
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="job_application lists">
+      <% @job_application_forms.each do |job|%>
+        <li>
+          <h2><%= job.title  %></h2>
+          <span class="description"><%= job.description %></span>
+
+        </li>
+        <%if current_admin_user.present?%>
+          <%= link_to 'Show Applications', job, class: 'btn btn-default btn-danger' %>
+
+          <%= link_to 'Edit', edit_job_application_form_path(job), class: 'btn btn-default btn-info' %>
+          <%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-default btn-danger' %>
+        <%end%>
+
+        <%= link_to 'Apply', new_job_application_form_job_application_path(job), class: 'btn btn-default btn-success' %>
+      <%end%>
+    </ul>
+  </div>
+</div>

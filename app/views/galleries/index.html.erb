@@ -30,8 +30,10 @@
           <div>
             <span class="date_text"> Place:</span><span class="date_value"><%= gallery.place %></span>
           </div>
-          <%= link_to 'Edit', edit_gallery_path(gallery) %>
-          <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%if current_admin_user.present?%>
+            <%= link_to 'Edit', edit_gallery_path(gallery) %>
+            <%= link_to 'Destroy', gallery, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%end%>
 
         </li>
       <%end%>

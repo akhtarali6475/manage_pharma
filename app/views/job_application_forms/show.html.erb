@@ -1,0 +1,37 @@
+<div class=" wdt_100">
+  <div class="mid_cnt">
+    <ul class="breadcum">
+      <li><a href="/">Home</a> &nbsp; > &nbsp;</li>
+      <li>Job Application Form &nbsp; > &nbsp;</li>
+      <li>Show</li>
+    </ul>
+  </div>
+</div>
+
+<div class="wdt_100">
+  <div class="mid_cnt">
+    <h1><%= @job_application_form.title %></h1>
+    <table class='table table-bordered'>
+      <thead>
+        <tr>
+          <th>Applicant First Name</th>
+          <th>Applicant Last Name</th>
+          <th>Applicant Phone</th>
+          <th>Applicant Email</th>
+          <th>Applicant Resume</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @job_application_form.job_applications.each do |job|%>
+          <tr>
+            <td><%=job.first_name%></td>
+            <td><%=job.last_name%></td>
+            <td><%=job.phone_number%></td>
+            <td><%=job.email%></td>
+            <td><%= link_to "Download Resume", job.resume.attachment_url %></td>
+          </tr>
+        <%end%>
+      </tbody>
+    </table>
+  </div>
+</div>
