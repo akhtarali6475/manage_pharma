@@ -25,7 +25,6 @@ class JobApplicationsController < ApplicationController
   # POST /job_applications
   # POST /job_applications.json
   def create
-    byebug
     @job_application = JobApplication.new(job_application_params)
     respond_to do |format|
       if @job_application.save
