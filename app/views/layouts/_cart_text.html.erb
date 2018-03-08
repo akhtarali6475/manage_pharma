@@ -1,0 +1,4 @@
+<%= link_to  cart_path do %>
+  <%= image_tag 'cart_icon.png', height: 20, width: 20%>
+  <span class="cart_no"><%= current_order.order_items.size%></span>
+<%end%>
