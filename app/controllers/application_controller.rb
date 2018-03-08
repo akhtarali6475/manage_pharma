@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
 	    order = Order.find(session[:order_id])
 	    if order.status != 'ongoing'
 	    	Order.new
+	    else
+	    	order
 	    end
 	  else
 	    Order.new

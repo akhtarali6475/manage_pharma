@@ -10,7 +10,7 @@ class Order < ApplicationRecord
 
 	private
   def set_order_status
-    self.status = 1
+    self.status = 0
   end
 
   def update_subtotal
