@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :schemes
   resources :products
   devise_for :admin_users
+  resources :orders
   resources :users
   root to: 'home#index'
 

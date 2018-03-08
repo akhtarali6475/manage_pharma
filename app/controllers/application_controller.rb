@@ -5,7 +5,10 @@ class ApplicationController < ActionController::Base
 
   def current_order
     if !session[:order_id].nil?
-	    Order.find(session[:order_id])
+	    order = Order.find(session[:order_id])
+	    if order.status != 'ongoing'
+	    	Order.new
+	    end
 	  else
 	    Order.new
 	  end

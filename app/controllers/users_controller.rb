@@ -29,7 +29,13 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        if params[:place_order].present?
+          order = Order.find(params[:place_order])
+          order.update_attributes(status: 1, user_id: @user.id)
+          format.html { redirect_to cart_path, notice: 'Your order is placed successfully!' }
+        else
+          format.html { redirect_to @user, notice: 'User was successfully created.' }
+        end
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }

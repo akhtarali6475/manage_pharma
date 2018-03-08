@@ -398,14 +398,14 @@ a.order_now {
 a.more_btn {
   display: inline-block;
   font-size: 80px;
-  color: #fff;
+  color: #e4dcd7;
   text-decoration: none;
   font-family: 'Qwigley', cursive;
   line-height: 30px;
   width: 400px;
   height: 140px;
   border-radius: 100%;
-  background: #a61d3d;
+  background: dimgray;
   box-shadow: 0px 0px 50px #ccc;
   padding: 52px 0px;
   margin-bottom: 65px;
@@ -1366,4 +1366,8 @@ ul.prd_list li .description{
   color: red;
   font-family: monospace;
   font-weight: bold;
+}
+.home_add_qty{
+  width: 81%;
+  padding-left: 71px;
 }
